@@ -33,7 +33,6 @@ const ViewAll = () => {
 
   const loadMoreProducts = useCallback(async () => {
     const { count, products } = await fetchProducts("", page + 1);
-    console.log("productsAPI******", products);
     if (count < 6) {
       setHasMoreData(false);
     }

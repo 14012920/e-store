@@ -20,16 +20,6 @@ export const fetchProducts = async (q: string, page: number) => {
   }
 };
 
-export const fetchSingleProduct = async (id: string) => {
-  try {
-    const response = await fetch(`http://localhost:3000/api/product/${id}`);
-    const res = await response.json();
-    return res?.data;
-  } catch (err) {
-    console.log("payment errror", err);
-    throw err;
-  }
-};
 export const fetchOrders = async (q: string, page: number) => {
   const regex = new RegExp(q, "i");
   const ITEM_PER_PAGE = 10;
