@@ -13,6 +13,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 import { DialogClose } from "@radix-ui/react-dialog";
 import { Button } from "../ui/button";
+import Image from "next/image";
 const CheckoutModal = ({
   openModal,
   setOpenModal,
@@ -26,6 +27,7 @@ const CheckoutModal = ({
   const [disabled, setDisabled] = useState(true);
   const [mobile, setMobile] = useState("");
   const [type, setType] = useState("login");
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [OTP, setOTP] = useState("");
 
   useEffect(() => {
@@ -140,7 +142,6 @@ const CheckoutModal = ({
 
   const handlePayment = async () => {
     try {
-      onChangeModal();
       setIsLoading(true);
       const order = await createOrder();
       console.log("myorder", order);
@@ -181,6 +182,7 @@ const CheckoutModal = ({
             console.log("verify result", result);
             if (result?.ok) {
               setIsLoading(false);
+              setPaymentSuccess(true);
               // saveOrder(response.razorpay_order_id);
             }
           },
@@ -240,6 +242,17 @@ const CheckoutModal = ({
               color="#8e394c"
             />
             <p className="font-semibold">intializing...</p>
+          </div>
+        ) : paymentSuccess ? (
+          <div className="absolute top-[35%] right-[43%] mx-auto">
+            <Image
+              src={"/success.gif"}
+              height={150}
+              width={150}
+              alt="success"
+              className="ml-8"
+            />
+            <p className="font-semibold">Order placed succefully!</p>
           </div>
         ) : (
           <div className="grid grid-cols-7 overflow-x-auto">

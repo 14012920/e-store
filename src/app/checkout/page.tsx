@@ -11,6 +11,7 @@ import { useCallback, useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { useMediaQuery } from "@/components/hooks/use-media-query";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 const Checkout = () => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const router = useRouter();
@@ -18,7 +19,7 @@ const Checkout = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [activeStep, setActiveStep] = useState("mobile");
   const [stepCompleted, setStepComplete] = useState("");
-
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [disabled, setDisabled] = useState(true);
 
   const [mobile, setMobile] = useState("");
@@ -179,6 +180,7 @@ const Checkout = () => {
             console.log("verify result", result);
             if (result?.ok) {
               setIsLoading(false);
+              setPaymentSuccess(true);
               // saveOrder(response.razorpay_order_id);
             }
           },
@@ -215,25 +217,44 @@ const Checkout = () => {
         id="razorpay-checkout-js"
         src="https://checkout.razorpay.com/v1/checkout.js"
       />
-      <CheckoutHeader activeStep={activeStep} stepCompleted={stepCompleted} />
-      <OrderSummery />
-      <div className="flex flex-1 flex-col">
-        {(type === "login" || type === "otp") && (
-          <ContactForm
-            mobile={mobile}
-            onChangeMobile={onChangeMobile}
-            otp={OTP}
-            onChangeOTP={onChangeOTP}
-            type={type}
+      {paymentSuccess ? (
+        <div className="absolute top-0 bottom-0 left-20 right-0 mx-auto">
+          <Image
+            src={"/success.gif"}
+            height={150}
+            width={150}
+            alt="success"
+            className="ml-8"
           />
-        )}
-        {type === "address" && <CheckoutAddress />}
-      </div>
-      <CheckoutFooter
-        disabled={disabled}
-        onClickButton={onClickButton}
-        isLoading={isLoading}
-      />
+          <p className="font-semibold">Order placed succefully!</p>
+        </div>
+      ) : (
+        <div>
+          <CheckoutHeader
+            activeStep={activeStep}
+            stepCompleted={stepCompleted}
+          />
+          <OrderSummery />
+          <div className="flex flex-1 flex-col">
+            {(type === "login" || type === "otp") && (
+              <ContactForm
+                mobile={mobile}
+                onChangeMobile={onChangeMobile}
+                otp={OTP}
+                onChangeOTP={onChangeOTP}
+                type={type}
+              />
+            )}
+            {type === "address" && <CheckoutAddress />}
+          </div>
+          <CheckoutFooter
+            disabled={disabled}
+            onClickButton={onClickButton}
+            isLoading={isLoading}
+          />
+        </div>
+      )}
+
       <ToastContainer
         position="bottom-center"
         autoClose={1000}
