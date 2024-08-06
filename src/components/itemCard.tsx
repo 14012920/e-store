@@ -22,7 +22,7 @@ const ItemCard = ({ item, onClickDelete, onClickMinus, onClickPlus }: any) => {
           <div className="flex w-full justify-normal">
             <p className="text-xs line-clamp-1 max-w-[90%]">{item?.title}</p>
             <Button variant="ghost" size="icon" onClick={onClickDelete}>
-              <Trash className="h-5 w-5 text-primary" />
+              <Trash className="h-5 w-5 text-gray-600" />
             </Button>
           </div>
 

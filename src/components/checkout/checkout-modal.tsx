@@ -9,21 +9,32 @@ import Script from "next/script";
 import { toast, ToastContainer } from "react-toastify";
 import { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 import { DialogClose } from "@radix-ui/react-dialog";
 import { Button } from "../ui/button";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import CheckoutPayment from "./checkout-payment";
 const CheckoutModal = ({
   openModal,
-  setOpenModal,
+  openQuitModal,
   onChangeModal,
   loader,
   setIsLoader,
+  onchangeQuitModal,
 }: any) => {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const [activeStep, setActiveStep] = useState("mobile");
-  const [stepCompleted, setStepComplete] = useState("");
+  const [activeStep, setActiveStep] = useState(1);
+  const [stepCompleted, setStepComplete] = useState(0);
   const [disabled, setDisabled] = useState(true);
   const [mobile, setMobile] = useState("");
   const [type, setType] = useState("login");
@@ -56,7 +67,6 @@ const CheckoutModal = ({
   };
   const onClickButton = (e: any) => {
     e.preventDefault();
-
     if (type === "login") {
       setIsLoading(true);
       setTimeout(() => {
@@ -68,15 +78,18 @@ const CheckoutModal = ({
       setIsLoading(true);
       setTimeout(() => {
         setIsLoading(false);
-        setActiveStep("address");
-        setStepComplete("mobile");
+        setActiveStep(2);
+        setStepComplete(1);
         setType("address");
       }, 2000);
     }
     if (type === "address") {
+      setStepComplete(2);
+      setActiveStep(3);
+      setType("payment");
+    }
+    if (type === "payment") {
       setIsLoading(true);
-      setStepComplete("address");
-      setActiveStep("payment");
       handlePayment();
     }
   };
@@ -183,6 +196,9 @@ const CheckoutModal = ({
             if (result?.ok) {
               setIsLoading(false);
               setPaymentSuccess(true);
+              setTimeout(() => {
+                router.replace("/");
+              }, 3000);
               // saveOrder(response.razorpay_order_id);
             }
           },
@@ -204,14 +220,32 @@ const CheckoutModal = ({
       setIsLoading(false);
     }
   };
-  //   const onChangeModal = () => {
-  //     setOpenModal(false);
-  //     router.back();
-  //   };
+  const onClickBack = (e: any) => {
+    console.log("clikcked");
+    e.preventDefault();
+    if (type === "login") {
+      onChangeModal();
+    }
+    if (type === "otp") {
+      setActiveStep(1);
+      setStepComplete(0);
+      setType("login");
+    }
+    if (type === "address") {
+      setStepComplete(0);
+      setActiveStep(1);
+      setType("login");
+    }
+    if (type === "payment") {
+      setStepComplete(1);
+      setActiveStep(2);
+      setType("address");
+    }
+  };
   return (
     <Dialog open={openModal} modal={false}>
       <DialogContent
-        className="h-[500px] bg-slate-50 p-0 m-0"
+        className="h-[550px] bg-slate-50 p-0 m-0"
         onOpenAutoFocus={(e) => {
           e.preventDefault();
         }}
@@ -226,7 +260,7 @@ const CheckoutModal = ({
           asChild
           className="bg-white w-10 h-10 mb-1 p-0 m-0 absolute right-[-5px] top-[-5px] z-20 rounded-full hover:z-30"
         >
-          <Button variant="ghost" onClick={onChangeModal}>
+          <Button variant="ghost" onClick={onchangeQuitModal}>
             <X className="h-6 w-6" color="#8e394c" />
           </Button>
         </DialogClose>
@@ -262,6 +296,7 @@ const CheckoutModal = ({
                   activeStep={activeStep}
                   stepCompleted={stepCompleted}
                   isDesktop={true}
+                  onClickBack={onClickBack}
                 />
                 {(type === "login" || type === "otp") && (
                   <ContactForm
@@ -273,7 +308,7 @@ const CheckoutModal = ({
                   />
                 )}
                 {type === "address" && <CheckoutAddress />}
-
+                {type === "payment" && <CheckoutPayment />}
                 <CheckoutFooter
                   disabled={disabled}
                   onClickButton={onClickButton}
@@ -303,6 +338,27 @@ const CheckoutModal = ({
         pauseOnHover={false}
         theme="dark"
       /> */}
+      <Dialog open={openQuitModal}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>
+              Products in <span className="text-yellow-600">huge demand</span>
+            </DialogTitle>
+            <DialogDescription>
+              Product might run Out of Stock.Are you sure you want to cancel
+              payment?
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button variant="ghost" onClick={onChangeModal}>
+              Yes
+            </Button>
+            <Button variant="ghost" onClick={onchangeQuitModal}>
+              No
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </Dialog>
   );
 };

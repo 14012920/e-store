@@ -18,14 +18,14 @@ const CheckoutFooter = ({
   if (isDesktop) {
     return (
       <div className="fixed bottom-0 left-0 right-0 z-10 max-w-[50%] py-2 ml-7">
-        <div className="flex  flex-col w-full">
-          <div className="flex  flex-col">
+        <div className="flex flex-col w-full">
+          <div className="flex flex-col">
             <Button
               className="border-primary p-7 mx-3 text-lg"
               disabled={disabled}
               onClick={onClickButton}
             >
-              {type === "address" ? "Pay Now" : "Continue"}
+              {type === "payment" ? "Pay Now" : "Continue"}
               {isLoading ? (
                 <Loader2 className="ml-2 h-4 w-4 animate-spin" />
               ) : (
@@ -85,7 +85,7 @@ const CheckoutFooter = ({
             disabled={disabled}
             onClick={onClickButton}
           >
-            Continue
+            {type === "payment" ? "Pay Now" : "Continue"}
             {isLoading ? (
               <Loader2 className="ml-2 h-4 w-4 animate-spin" />
             ) : (

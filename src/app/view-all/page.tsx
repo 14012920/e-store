@@ -27,7 +27,9 @@ const ViewAll = () => {
   });
   console.log("inview", inView);
   const loadProducts = async () => {
-    const { products } = await fetchProducts("", page);
+    const { products } = JSON.parse(
+      JSON.stringify(await fetchProducts("", page))
+    );
     setAllProducts(products || []);
   };
 
@@ -68,7 +70,7 @@ const ViewAll = () => {
             </BreadcrumbList>
           </Breadcrumb>
         </div>
-        <div className="flex flex-col  mt-8">
+        <div className="flex flex-col min-h-screen mt-8">
           {allProducts?.length ? (
             <>
               <div className="p-0 m-0 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-4 gap-2">

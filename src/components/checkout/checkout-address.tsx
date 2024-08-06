@@ -1,25 +1,7 @@
 import { useState } from "react";
-import {
-  BadgeCheck,
-  BadgePercent,
-  Check,
-  ChevronDown,
-  ChevronsUpDown,
-  CircleCheck,
-  Plus,
-  PlusIcon,
-  ShoppingCart,
-  X,
-} from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { Check, CircleCheck, PlusIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Separator } from "../ui/separator";
+import { Card, CardContent } from "@/components/ui/card";
 
 const CheckoutAddress = () => {
   const [isSelected, setIsSelected] = useState(false);

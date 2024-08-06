@@ -10,15 +10,16 @@ import { toast, ToastContainer } from "react-toastify";
 import { useCallback, useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { useMediaQuery } from "@/components/hooks/use-media-query";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import Image from "next/image";
+import CheckoutPayment from "@/components/checkout/checkout-payment";
 const Checkout = () => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const router = useRouter();
   const [loader, setIsLoader] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [activeStep, setActiveStep] = useState("mobile");
-  const [stepCompleted, setStepComplete] = useState("");
+  const [activeStep, setActiveStep] = useState(1);
+  const [stepCompleted, setStepComplete] = useState(0);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [disabled, setDisabled] = useState(true);
 
@@ -41,7 +42,10 @@ const Checkout = () => {
     } else {
       setDisabled(true);
     }
-  }, [mobile]);
+    if (OTP.length < 6 && type === "otp") {
+      setDisabled(true);
+    }
+  }, [mobile, OTP, type]);
 
   const onChangeMobile = (e: any) => {
     setMobile(e.target.value);
@@ -54,7 +58,6 @@ const Checkout = () => {
   };
   const onClickButton = (e: any) => {
     e.preventDefault();
-
     if (type === "login") {
       setIsLoading(true);
       setTimeout(() => {
@@ -66,15 +69,18 @@ const Checkout = () => {
       setIsLoading(true);
       setTimeout(() => {
         setIsLoading(false);
-        setActiveStep("address");
-        setStepComplete("mobile");
+        setActiveStep(2);
+        setStepComplete(1);
         setType("address");
       }, 2000);
     }
     if (type === "address") {
+      setStepComplete(2);
+      setActiveStep(3);
+      setType("payment");
+    }
+    if (type === "payment") {
       setIsLoading(true);
-      setStepComplete("address");
-      setActiveStep("payment");
       handlePayment();
     }
   };
@@ -146,7 +152,7 @@ const Checkout = () => {
       if (order) {
         const options = {
           key: "rzp_test_U1odAZx2aIXLbD",
-          amount: 499 * 100,
+          amount: 899 * 100,
           currency: "INR",
           name: "Saucefin",
           prefill: { contact: 8529991516 },
@@ -181,7 +187,12 @@ const Checkout = () => {
             if (result?.ok) {
               setIsLoading(false);
               setPaymentSuccess(true);
+              setTimeout(() => {
+                router.replace("/");
+              }, 3000);
               // saveOrder(response.razorpay_order_id);
+            } else {
+              setIsLoading(false);
             }
           },
           theme: {
@@ -200,6 +211,28 @@ const Checkout = () => {
     } catch (error) {
       toast.error("there is some issue,Please try again 😑");
       setIsLoading(false);
+    }
+  };
+  const onClickBack = (e) => {
+    console.log("clikcked");
+    e.preventDefault();
+    if (type === "login") {
+      router.back();
+    }
+    if (type === "otp") {
+      setActiveStep(1);
+      setStepComplete(0);
+      setType("login");
+    }
+    if (type === "address") {
+      setStepComplete(0);
+      setActiveStep(1);
+      setType("login");
+    }
+    if (type === "payment") {
+      setStepComplete(1);
+      setActiveStep(2);
+      setType("address");
     }
   };
 
@@ -227,15 +260,17 @@ const Checkout = () => {
             className="ml-8"
           />
           <p className="font-semibold">Order placed succefully!</p>
+          <p className="font-semibold">redirecting to home page...</p>
         </div>
       ) : (
         <div>
           <CheckoutHeader
             activeStep={activeStep}
             stepCompleted={stepCompleted}
+            onClickBack={onClickBack}
           />
           <OrderSummery />
-          <div className="flex flex-1 flex-col">
+          <div className="flex flex-1 flex-col overflow-y-auto">
             {(type === "login" || type === "otp") && (
               <ContactForm
                 mobile={mobile}
@@ -246,11 +281,13 @@ const Checkout = () => {
               />
             )}
             {type === "address" && <CheckoutAddress />}
+            {type === "payment" && <CheckoutPayment />}
           </div>
           <CheckoutFooter
             disabled={disabled}
             onClickButton={onClickButton}
             isLoading={isLoading}
+            type={type}
           />
         </div>
       )}

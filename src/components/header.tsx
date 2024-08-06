@@ -20,6 +20,8 @@ const AppHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [loader, setIsLoader] = useState(false);
+  const [openQuitModal, setOpenQuitModal] = useState(false);
+
   if (isDesktop) {
     return (
       <div
@@ -146,10 +148,13 @@ const AppHeader = () => {
           openModal={openModal}
           onChangeModal={(e: any) => {
             setOpenModal(false);
+            setOpenQuitModal(false);
             setTimeout(() => setIsOpen(true), 0);
           }}
           loader={loader}
           setIsLoader={setIsLoader}
+          openQuitModal={openQuitModal}
+          onchangeQuitModal={() => setOpenQuitModal(!openQuitModal)}
         />
       </div>
     );
@@ -207,8 +212,8 @@ const AppHeader = () => {
             className="flex flex-1 w-[90%] pt p-2 flex-col overflow-y-auto no-scrollbar"
             side="right"
           >
-            <SheetHeader className="flex flex-row py-2">
-              <p className="text-md font-semibold  mb-1">Your Cart</p>
+            <SheetHeader className="flex flex-row pt-2">
+              <p className="text-md font-semibold">Your Cart</p>
             </SheetHeader>
             <div className="flex flex-row p-1 bg-slate-300 items-center justify-center">
               <p className="text-xs text-center line-clamp-1">
@@ -227,7 +232,7 @@ const AppHeader = () => {
             />
             <div>
               <div>
-                <p className="text-md font-semibold  mb">People Also Bought</p>
+                <p className="text-md font-semibold">People Also Bought</p>
                 <CartSuggestions
                   allProducts={[
                     {
@@ -251,10 +256,10 @@ const AppHeader = () => {
                   ]}
                 />
               </div>
-              <Separator className="my-2" />
+              <Separator />
 
               <div className="flex flex-col p-2">
-                <div className="flex flex-row justify-between w-full pb-2 font-semibold">
+                <div className="flex flex-row justify-between w-full font-semibold">
                   <p>Total</p>
                   <p>₹1600</p>
                 </div>
