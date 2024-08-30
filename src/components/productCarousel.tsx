@@ -40,15 +40,18 @@ export function ProductCarousel({
               key={index}
               className="basis-[45%] md:basis-1/2 lg:basis-1/4 "
             >
-              <Link href={`/product-detail/${id}`} className="cursor-pointer">
+              <Link
+                href={`/product-detail/${item?._id}`}
+                className="cursor-pointer"
+              >
                 <div>
                   <Card className="border-none relative">
                     <div className="bg-slate-50 p-1 text-[10px] lg:text-sm text-primary absolute top-2 left-2">
-                      <p>ON SALE</p>
+                      <p>{item?.ribbon}</p>
                     </div>
                     <CardContent className="p-0 m-0 flex items-center justify-center bg-slate-300">
                       <img
-                        src={item?.image}
+                        src={item?.images[0]}
                         alt={`alt-p1`}
                         className="object-fill"
                       />
@@ -62,15 +65,20 @@ export function ProductCarousel({
                       <div className="flex flex-row w-full justify-between items-center">
                         <div className="lg:flex lg:flex-row lg:gap-2">
                           <p className="font-normal text-xs text-red-500 lg:text-sm">
-                            Rs.{item?.price}
+                            Rs.{item?.discountedPrice}
                           </p>
                           <p className="font-normal text-xs text-gray-500 line-through lg:text-sm">
-                            Rs. {item.mrp}
+                            Rs. {item.price}
                           </p>
                         </div>
 
                         <div className="bg-red-500 p-1 text-xs lg:text-sm text-white">
-                          <p>80% OFF</p>
+                          <p>
+                            {Math.round(
+                              (item?.discountedPrice / item?.price) * 100
+                            )}
+                            % OFF
+                          </p>
                         </div>
                       </div>
                     </CardFooter>

@@ -11,34 +11,24 @@ const razorpay = new Razorpay({
   key_secret: process.env.RAZORPAY_APP_SECRET,
 });
 export async function POST(request: NextRequest) {
-  const { amount, currency } = (await request.json()) as {
-    amount: string;
-    options: any;
-    customer: any;
-    currency: string;
-  };
-  //  const  customer= {
-  //     name: "Gaurav Kumar",
-  //     email: "gaurav.kumar@example.com",
-  //     contact: "+919000090000",
-  //   }
-  //  checkout: {
-  //   method: {
-  //     netbanking: 0,
-  //     card: 1,
-  //     upi: 1,
-  //     wallet: 0,
-  //   }
-  // }
+  const { amount, currency, line_items } = (await request.json()) as any;
   var option = {
     amount: amount,
     currency: currency,
     receipt: getRandomId(1000, 99000),
+    line_items_total: amount,
+    line_items: line_items,
   };
+  console.log(option);
   const order = await razorpay.orders.create(option);
-  console.log(order);
+
   return NextResponse.json(
-    { id: order.id, currency: order.currency, amount: order.amount },
+    {
+      id: order.id,
+      currency: order.currency,
+      amount: order.amount,
+      line_items,
+    },
     { status: 200 }
   );
 }

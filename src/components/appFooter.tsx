@@ -1,5 +1,6 @@
 import { Facebook, Instagram, ShieldCheck } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const AppFooter = () => {
   return (
@@ -26,20 +27,28 @@ const AppFooter = () => {
           </div>
         </div>
         <div className="flex flex-1 flex-col lg:items-center mt-3">
-          <p className="text-normal font-medium">Shop Now</p>
+          <p className="text-normal font-medium">Terms & Policy</p>
           <div className="lg:flex flex-1 flex-col">
-            <p className="text-xs lg:text-sm  underline underline-offset-2 cursor-pointer pb-1">
-              CLOTHES
-            </p>
-            <p className="text-xs lg:text-sm underline underline-offset-2 cursor-pointer pb-1">
-              BEAUTY
-            </p>
-            <p className="text-xs lg:text-sm underline underline-offset-2 cursor-pointer pb-1">
-              FOOTWEAR
-            </p>
-            <p className="text-xs lg:text-sm underline underline-offset-2 cursor-pointer pb-1">
-              JEWELLERY
-            </p>
+            <Link href={"/policy/privacy-policy"}>
+              <p className="text-xs lg:text-sm  underline underline-offset-2 cursor-pointer pb-1">
+                Privacy Policy
+              </p>
+            </Link>
+            <Link href={"/policy/return-policy"}>
+              <p className="text-xs lg:text-sm  underline underline-offset-2 cursor-pointer pb-1">
+                Return Policy
+              </p>
+            </Link>
+            <Link href={"/policy/shipping-policy"}>
+              <p className="text-xs lg:text-sm  underline underline-offset-2 cursor-pointer pb-1">
+                Shipping Policy
+              </p>
+            </Link>
+            <Link href={"/policy/terms-conditions"}>
+              <p className="text-xs lg:text-sm  underline underline-offset-2 cursor-pointer pb-1">
+                Terms of Service
+              </p>
+            </Link>
           </div>
         </div>
 

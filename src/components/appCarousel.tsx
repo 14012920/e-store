@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import * as React from "react";
 import {
   Carousel,
@@ -7,12 +8,19 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "./ui/card";
+import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
-
 export function AppCarousel() {
-  const arr = ["/banner_new_1.png", "/banner_2_new.png"];
+  const arr = ["/banner_2_new.png", "/banner1.webp"];
   return (
-    <Carousel className="w-full" orientation="horizontal">
+    <Carousel
+      className="w-full"
+      orientation="horizontal"
+      opts={{
+        align: "start",
+        loop: true,
+      }}
+    >
       <CarouselContent>
         {arr.map((item, index) => (
           <CarouselItem key={index} className="h-[70vh]">

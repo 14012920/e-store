@@ -1,7 +1,7 @@
 "use server";
 import mongoose from "mongoose";
 const connection = {} as any;
-export const dbConnect = async () => {
+export const connectToDB = async () => {
   try {
     if (connection.isConnected) return;
     const db = await mongoose.connect(process.env.MONGODB_URI, {

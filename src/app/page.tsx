@@ -3,6 +3,8 @@ import AppContainer from "@/components/appContainer";
 import Category from "@/components/category";
 import { ProductCarousel } from "@/components/productCarousel";
 import { Button } from "@/components/ui/button";
+import { fetchProductByCatId } from "@/lib/action";
+import { fetchProducts } from "@/lib/data";
 import Link from "next/link";
 const data1 = [
   { title: "zipper neck / v-neck tshirt", image: "/cat1.webp" },
@@ -90,7 +92,10 @@ const data2 = [
     subTitle: "fROM Rs 149 STARTS",
   },
 ];
-export default function Home() {
+export default async function Home() {
+  const page = 1;
+  const { productByCatId } = await fetchProductByCatId("Cloths", page);
+  console.log("prodct", "count", productByCatId);
   return (
     <main className="flex min-h-screen flex-col overflow-y-scroll no-scrollbar">
       <AppContainer>
@@ -100,7 +105,7 @@ export default function Home() {
             isShowTitle={true}
             title={"NEW"}
             hightLighted="ARRIVAL"
-            data={prodct1}
+            data={productByCatId}
           />
           <div className="flex flex-1 items-center py-8 justify-center">
             <Link href={"/view-all"}>
@@ -113,7 +118,7 @@ export default function Home() {
             <Category title="CATEGORY" allProducts={data1} />
           </div>
 
-          <div className="lg:my-8">
+          {/* <div className="lg:my-8">
             <ProductCarousel
               isShowTitle={true}
               title={"CLEARANCE"}
@@ -127,7 +132,7 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
-          </div>
+          </div> */}
           <div>
             <Category title="COMBO" allProducts={data2} />
           </div>

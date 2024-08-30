@@ -196,7 +196,7 @@ const Checkout = () => {
             }
           },
           theme: {
-            color: "#8e394c",
+            color: "#0c1424",
           },
         };
         const paymentObject = new window.Razorpay(options);
@@ -239,7 +239,7 @@ const Checkout = () => {
   if (loader) {
     return (
       <div className="flex flex-1 flex-col items-center justify-center h-screen">
-        <Loader className="h-12 w-12 my-2 animate-spin" color="#8e394c" />
+        <Loader className="h-12 w-12 my-2 animate-spin" color="#0c1424" />
         <p className="font-semibold">intializing...</p>
       </div>
     );

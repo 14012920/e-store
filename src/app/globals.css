@@ -10,7 +10,7 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 347, 43%, 39%;
+    --primary: 216, 16%, 25%;
     --primary-foreground: 0 0% 98%;
     --secondary: 344, 19%, 35%;
     --secondary-foreground: 240 5.9% 10%;
@@ -29,7 +29,7 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --text: 209, 55%, 22%;
+    --text: 220, 50%, 9%;
   }
 
   .dark {
@@ -105,4 +105,7 @@
   100% {
     transform: scale(1, 1);
   }
+}
+svg.star-svg {
+  display: inline;
 }

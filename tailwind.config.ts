@@ -34,6 +34,8 @@ const config = {
         h2: "hsl(var(--text))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
+        textcustom: "hsl(var(--text-custom))",
+        iconWhite: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",

@@ -142,7 +142,7 @@ const CheckoutModal = ({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          amount: 499 * 100,
+          amount: 49 * 100,
           currency: "INR",
         }),
       });
@@ -161,23 +161,23 @@ const CheckoutModal = ({
       if (order) {
         const options = {
           key: "rzp_test_U1odAZx2aIXLbD",
-          amount: 499 * 100,
           currency: "INR",
-          name: "Saucefin",
+          one_click_checkout: true,
+          name: "DueoPrimp",
           prefill: { contact: 8529991516 },
           readonly: { contact: false },
-          checkout: {
-            method: {
-              netbanking: 0,
-              card: 1,
-              upi: 1,
-              wallet: 1,
-            },
-            notes: {
-              key1: "value3",
-              key2: "value2",
-            },
-          },
+          // checkout: {
+          //   method: {
+          //     netbanking: 0,
+          //     card: 1,
+          //     upi: 1,
+          //     wallet: 1,
+          //   },
+          //   notes: {
+          //     key1: "value3",
+          //     key2: "value2",
+          //   },
+          // },
           order_id: order.id,
           handler: async (response: any) => {
             const data = {
@@ -203,7 +203,7 @@ const CheckoutModal = ({
             }
           },
           theme: {
-            color: "#8e394c",
+            color: "#0c1424",
           },
         };
         const paymentObject = new window.Razorpay(options);
@@ -261,19 +261,15 @@ const CheckoutModal = ({
           className="bg-white w-10 h-10 mb-1 p-0 m-0 absolute right-[-5px] top-[-5px] z-20 rounded-full hover:z-30"
         >
           <Button variant="ghost" onClick={onchangeQuitModal}>
-            <X className="h-6 w-6" color="#8e394c" />
+            <X className="h-6 w-6" color="#0c1424" />
           </Button>
         </DialogClose>
-        <Script
-          id="razorpay-checkout-js"
-          src="https://checkout.razorpay.com/v1/checkout.js"
-        />
 
         {loader ? (
           <div className="absolute top-[42%] right-[43%] mx-auto">
             <Loader
               className="h-12 w-12 my-2 animate-spin ml-4"
-              color="#8e394c"
+              color="#0c1424"
             />
             <p className="font-semibold">intializing...</p>
           </div>
