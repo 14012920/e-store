@@ -7,10 +7,11 @@ import {
 } from "@/components/ui/sheet";
 import ItemCard from "./itemCard";
 import { Separator } from "./ui/separator";
-import { Link, Menu, Search, User } from "lucide-react";
+import { Menu, Search, User } from "lucide-react";
 import { Button } from "./ui/button";
 import CartSuggestions from "./cart-suggestion";
 import Image from "next/image";
+import Link from "next/link";
 
 const DesktopCart = ({
   cartProducts,
@@ -27,36 +28,28 @@ const DesktopCart = ({
     <div
       className="fixed
     top-0
-    left-0  z-30 flex flex-1 min-w-full items-center px-16 h-20  bg-background   border-b-[1px]  justify-between"
+    left-0  z-10 flex flex-1 min-w-full items-center px-16 min-h-20 bg-appBgColor justify-between border-b-[1px]"
     >
+      <Link href={"/"}>
+        <h1 className="text-2xl font-bold">BRAND NAME</h1>
+      </Link>
       <div className="gap-10 flex items-center">
-        <Link href={"/"}>
-          <img
-            src="/icon2.webp"
-            alt={`brand-icon`}
-            className="object-contain w-20 h-20 cursor-pointer"
-          />
-        </Link>
-
-        <ul className="flex gap-3 font-medium h-16 items-center">
-          <li className="flex cursor-pointer h-full items-center px-4 hover:border-b-2 hover:border-primary">
+        <ul className="flex gap-3 font-normal h-16 items-center">
+          <li className="flex cursor-pointer h-full items-center px-4 hover:text-navbarTextHoverColor">
             Best Seller
           </li>
-          <li className="flex cursor-pointer h-full items-center px-4 hover:border-b-2 hover:border-primary">
+          <li className="flex cursor-pointer h-full items-center px-4 hover:text-navbarTextHoverColor">
             New Arrival
           </li>
-          <li className="flex cursor-pointer h-full items-center px-4 hover:border-b-2 hover:border-primary">
+          <li className="flex cursor-pointer h-full items-center px-4 hover:text-navbarTextHoverColor">
             Track Order
           </li>
-          <li className="flex cursor-pointer h-full items-center px-4 hover:border-b-2 hover:border-primary">
+          <li className="flex cursor-pointer h-full items-center px-4 hover:text-navbarTextHoverColor">
             Contact
           </li>
         </ul>
       </div>
       <div>
-        <Button variant="ghost" size="icon">
-          <User className="h-6 w-6" color="#0c1424" />
-        </Button>
         <Button variant="ghost" size="icon">
           <Search className="h-6 w-6" color="#0c1424" />
         </Button>
@@ -66,7 +59,13 @@ const DesktopCart = ({
           onClick={() => setIsOpen(true)}
           className="relative mr-2"
         >
-          <Image src="/cart.svg" alt={`brand-icon`} width={26} height={26} />
+          <Image
+            src="/cart.svg"
+            alt={`brand-icon`}
+            className="hover:text-navbarTextHoverColor"
+            width={26}
+            height={26}
+          />
           {cartCount > 0 && (
             <div className="absolute flex items-center justify-center  bottom-[1px] bg-black right-[-2px]  w-[20px] h-[20px] rounded-full">
               <p className="text-white text-xs text-center">{cartCount}</p>
@@ -80,7 +79,7 @@ const DesktopCart = ({
         >
           {cartCount < 1 ? (
             <SheetContent
-              className="flex flex-1 w-[90%] pt p-2 flex-col overflow-y-auto no-scrollbar"
+              className="flex flex-1 w-[90%] pt p-2 flex-col overflow-y-auto no-scrollbar bg-appBgColor"
               side="right"
             >
               <SheetHeader className="flex flex-row pt-2">
@@ -100,7 +99,7 @@ const DesktopCart = ({
             </SheetContent>
           ) : (
             <SheetContent
-              className="flex flex-1 w-[90%] pt p-2 flex-col "
+              className="flex flex-1 w-[90%] pt p-2 flex-col bg-appBgColor"
               side="right"
             >
               <SheetHeader className="flex flex-row pt-2">

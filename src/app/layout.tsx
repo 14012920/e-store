@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 
-const customFont = Montserrat({
+const customFont = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });

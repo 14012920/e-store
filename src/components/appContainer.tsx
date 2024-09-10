@@ -5,9 +5,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const AppContainer = ({ children }: any) => {
   return (
-    <div className="overflow-y-auto scrollbar-hidden mt-10">
+    <div className="overflow-y-auto scrollbar-hidden">
       <AppHeader />
-      <div className="lg:mt-16">{children}</div>
+      <div className="mt-16">{children}</div>
       <AppFooter />
       <ToastContainer
         position="top-right"

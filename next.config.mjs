@@ -6,6 +6,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  images: {
+    domains: ["online-women-store.s3.amazonaws.com"],
+  },
 };
 
 export default nextConfig;

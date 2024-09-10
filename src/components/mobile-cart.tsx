@@ -28,14 +28,14 @@ const MobileCart = ({
     <div
       className="fixed
       top-0
-      left-0 z-30 w-full flex items-center pl-4  h-16 bg-background  border-b-[1px] justify-between"
+      left-0 z-30 w-full flex items-center pl-4  min-h-16 bg-appBgColor  border-b-[1px] justify-between"
     >
       <div className="flex items-center flex-1 flex-grow">
         <Sheet>
           <SheetTrigger>
             <Menu className="h-6 w-6" color="#0c1424" />
           </SheetTrigger>
-          <SheetContent className="w-[90%]" side={"left"}>
+          <SheetContent className="w-[90%] bg-appBgColor" side={"left"}>
             <ul className="flex flex-col gap-1 font-semibold items-baseline mt-6">
               <li className="flex cursor-pointer p-1 items-center px-4">
                 Home
@@ -57,11 +57,9 @@ const MobileCart = ({
         </Sheet>
       </div>
       <div className=" flex flex-1 flex-grow items-center justify-center">
-        <img
-          src="/icon2.webp"
-          alt={`brand-icon`}
-          className="object-contain w-16 h-16"
-        />
+        <h1 className="font-semibold text-2xl lg:text-3xl text-navbarTextColor">
+          {"Brand"}
+        </h1>
       </div>
 
       <div className=" flex flex-1 flex-grow justify-end items-end">
@@ -88,7 +86,7 @@ const MobileCart = ({
         >
           {cartCount < 1 ? (
             <SheetContent
-              className="flex flex-1 w-[90%] pt p-2 flex-col overflow-y-auto no-scrollbar"
+              className="flex flex-1 w-[90%] pt p-2 bg-appBgColor flex-col overflow-y-auto no-scrollbar"
               side="right"
             >
               <SheetHeader className="flex flex-row pt-2">

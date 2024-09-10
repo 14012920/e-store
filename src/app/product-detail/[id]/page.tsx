@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import AppContainer from "@/components/appContainer";
 import { FAQList } from "@/components/faq-list";
@@ -85,7 +86,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
   return (
     <AppContainer>
       <div className="flex flex-col px-4 pb-4 lg:px-24 pt-16 lg:pt-4 overflow-y-auto min-h-full">
-        <div className="flex flex-row ">
+        <div className="flex flex-row mt-4">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem className="p-0 m-0">
@@ -102,7 +103,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
         </div>
         {Object.keys(product).length > 0 ? (
           <div className="flex flex-col  h-full overflow-y-auto">
-            <div className="flex flex-col my-10 lg:flex-row">
+            <div className="flex flex-col mb-10 mt-4 lg:flex-row">
               <div className="flex flex-1 flex-col">
                 <Carousel
                   setApi={setApi}
@@ -124,7 +125,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                           alt={`alt-${item}`}
                           style={{
                             objectFit: "cover",
-                            height: "70vh",
+                            height: "50vh lg:70vh",
                             width: "98%",
                           }}
                         />

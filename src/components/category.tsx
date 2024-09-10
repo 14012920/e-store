@@ -1,50 +1,28 @@
-import { Cat, Minus, Plus, Trash } from "lucide-react";
-import { Button } from "./ui/button";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import Link from "next/link";
-
-const Category = ({ allProducts, title }: any) => {
+const Category = ({ allCats, title }: any) => {
   return (
     <div>
-      <div className="flex flex-row justify-center items-center text-center w-full py-4">
-        <h1 className="font-semibold text-2xl lg:text-3xl">SHOP BY </h1>
-        <span className="font-semibold text-2xl lg:text-3xl text-primary underline pl-1 underline-offset-2">
+      <div className="flex flex-col justify-center  w-full py-4 my-8">
+        <h3 className="font-medium text-brandText lg:text-xl tracking-wider">
+          {"Shop By"}
+        </h3>
+        <h1 className="font-semibold text-2xl lg:text-3xl text-navbarTextColor">
           {title}
-        </span>
+        </h1>
+        <div className="w-32 h-1 bg-brandSecondary mt-3" />
       </div>
 
-      <div className="p-0 m-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-3 gap-2">
-        {allProducts.map((item: any, index: number) => (
-          <Link
-            href={`/view-all`}
-            key={index}
-            className="relative overflow-hidden"
-          >
-            <div className="p-0 m-0 h-80 lg:h-96 min-w-full overflow-hidden">
+      <div className="grid grid-cols-3 lg:overflow-x-auto lg:flex lg:no-scrollbar gap-3 lg:gap-4">
+        {allCats.map((item: any, index: number) => (
+          <Link href={`/view-all`} key={index}>
+            <div className="flex flex-col items-center text-center gap-2">
               <img
                 src={item?.image}
                 alt={`alt-p1`}
-                className={`object-fill w-full lg:h-96 h-80 zoom-in-out-box`}
+                className={`object-fill min-w-28 min-h-28 rounded-full`}
               />
-              <div className="w-full lg:h-96 h-80 bg-[rgba(0,0,0,0.4)] absolute top-0 left-0" />
-            </div>
 
-            <div className="p-2 flex flex-col absolute bottom-2 left-2">
-              {item?.subTitle && (
-                <p className="text-sm pb-4 lg:text-lg uppercase text-white">
-                  {item?.subTitle}
-                </p>
-              )}
-              <div>
-                <p className="text-md  pb-2 lg:text-lg uppercase text-white">
-                  {item?.title}
-                </p>
-              </div>
-              <div className="flex flex-row w-full">
-                <Button className="bg-slate-50 text-primary rounded-none">
-                  VIEW PRODUCTS
-                </Button>
-              </div>
+              <p className="text-sm lg:text-lg">{item?.name}</p>
             </div>
           </Link>
         ))}

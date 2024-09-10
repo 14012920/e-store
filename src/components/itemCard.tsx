@@ -10,7 +10,7 @@ const item = {
 };
 const ItemCard = ({ item, onClickDelete, onClickMinus, onClickPlus }: any) => {
   return (
-    <div className="flex flex-col  w-full">
+    <div className="flex flex-col  w-full bg-appBgColor">
       <div className="flex h-24 w-full flex-row">
         <div>
           <img
