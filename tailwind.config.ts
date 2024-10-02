@@ -28,6 +28,7 @@ const config = {
       },
       colors: {
         primary: "var(--brand-secondary)",
+        brand2:"var(--brand-modify-secondary)",
         brandSecondary: "var(--brand-secondary)",
         appBgColor: "var(--app-bg-color)",
         productBgColor: "var(--product-bg-color)",

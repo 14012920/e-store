@@ -34,15 +34,19 @@ export const fetchProductById = async (id: string) => {
 };
 
 export const fetchProductByCatId = async (q: string, page: number) => {
+  console.log("qqqqqqqqqq",q)
   const regex = new RegExp(q, "i");
   const ITEM_PER_PAGE = 10;
   try {
     await connectToDB();
-    const productByCatId = await Product.find({ collection: { $regex: regex } })
+    const productByCatId = await Product.find({
+      collections: { $regex: regex },
+    })
       .limit(ITEM_PER_PAGE)
       .skip(ITEM_PER_PAGE * (page - 1))
       .lean();
-    return { productByCatId: productByCatId };
+      console.log("productByCatId",productByCatId)
+    return { productByCatId: productByCatId,count:productByCatId?.length };
   } catch (err) {
     console.log(err);
     throw new Error("Failed to fetch products!");

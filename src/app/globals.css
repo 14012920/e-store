@@ -4,12 +4,12 @@
 
 @layer base {
   :root {
-    --app-bg-color: #ffffff;
-    --brand-secondary: #61ad4b;
-    --brand-text: #61ad4b;
-    --brand-modify-secondary: rgba(97, 173, 75, 0.3);
+    --app-bg-color: #ecefeb;
+    --brand-secondary: #3c3c3c;
+    --brand-text: #3c3c3c;    ;
+    --brand-modify-secondary: #3c3c3c;
     --product-bg-color: #f7f7f7;
-    --button-bg-color: #61ad4b;
+    --button-bg-color: #3c3c3c;
     --button-text-color: #ffffff;
     --button-bg-hover-color: #232323;
     --button-text-hover-color: #ffffff;
@@ -19,19 +19,19 @@
     --button-text-hover-color: #ffffff;
     --product-btn-bg-color: #ffffff;
     --product-icon-color: #222222;
-    --product-btn-bg-hover-color: #61ad4b;
+    --product-btn-bg-hover-color: #3c3c3c;
     --product-icon-hover-color: #ffffff;
     --navbar-background-color: #ffffff;
     --navbar-text-modify-color: rgba(34, 34, 34, 0.1);
     --navbar-text-color: #222222;
     --header-icon-modify-color: rgba(34, 34, 34, 0.1);
     --header-icon-color: #222222;
-    --header-icon-hover-color: #61ad4b;
+    --header-icon-hover-color: #3c3c3c;
     --menu-bg-color: #ffffff;
     --menu-text-modify-color: rgba(102, 102, 102, 0.1);
     --menu-text-color: #666666;
-    --menu-text-hover-color: #61ad4b;
-    --sale-bg-color: #7fbc1e;
+    --menu-text-hover-color: #3c3c3c;
+    --sale-bg-color: #3c3c3c;
     --sale-text-color: #ffffff;
     --soldout-bg-color: #c92c2c;
     --soldout-text-color: #ffffff;
@@ -41,17 +41,17 @@
     --footer-text-modify2-color: rgba(102, 102, 102, 0.15);
     --footer-text-modify3-color: rgba(102, 102, 102, 0.2);
     --footer-text-color: #666666;
-    --footer-text-hover-color: #61ad4b;
+    --footer-text-hover-color: #3c3c3c;
     --footer-bottom-bg-color: #151515;
     --footer-bottom-text-color: #ececec;
     --password-color: #232323;
     --password-textcolor: #ffffff;
     --font-body-family: Poppins;
     --bg-free-shipping-indicator: #f9f9f9;
-    --bg-free-shipping-indicator-eligible: #61ad4b;
+    --bg-free-shipping-indicator-eligible: #3c3c3c;
     --color-free-shipping-indicator: #232323;
-    --color-free-shipping-indicator-eligible: #61ad4b;
-    --progress-truck-bg: #61ad4b;
+    --color-free-shipping-indicator-eligible: #3c3c3c;
+    --progress-truck-bg: #3c3c3c;
     --progress-truck-wrapper: #ffffff;
     --color-free-shipping-backgorund: ;
   }

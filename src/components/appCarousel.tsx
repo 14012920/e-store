@@ -6,7 +6,7 @@ import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { Button } from "./ui/button";
-export function AppCarousel() {
+export function AppCarousel({banners}:any) {
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: false });
   const [emblaRef] = useEmblaCarousel({ loop: false }, [
@@ -51,13 +51,13 @@ export function AppCarousel() {
     <section className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {arr.map((item, index) => (
+          {banners.map((item, index) => (
             <div key={index} className="embla__slide">
               <div className="grid grid-rows-5 lg:grid-cols-5 h-[30rem]">
                 <div className="bg-gray-900 h-[30rem] lg:col-span-3 row-span-3">
                   <Image
-                    src={item.path}
-                    alt={`alt-${item.path}`}
+                    src={item.image}
+                    alt={`alt-${item.image}`}
                     className="w-full h-[30rem] object-fill"
                     width={0}
                     height={0}

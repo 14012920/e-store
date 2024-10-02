@@ -11,23 +11,10 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselApi,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
+import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { useCartStore } from "@/hooks/useCartStore";
 import { fetchProductById, getAllReview } from "@/lib/action";
-import {
-  ArrowRightLeft,
-  Car,
-  Loader,
-  Minus,
-  Plus,
-  ShieldCheck,
-  Slash,
-} from "lucide-react";
+import { ArrowRightLeft, Car, Loader, Minus, Plus, ShieldCheck, Slash } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Rating } from "react-simple-star-rating";
 import { toast, ToastContainer } from "react-toastify";
@@ -176,7 +163,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                     <p className="text-md font-semibold  mb-2 lg:text-lg uppercase">
                       {product?.title}
                     </p>
-                    <Rating initialValue={avargeRating} readonly size={20} />
+                    <Rating initialValue={avargeRating < 3 ? 4 : avargeRating} readonly size={20} />
                   </div>
                   <div className="flex flex-row items-center py-2">
                     <div className="flex gap-2 lg:flex lg:flex-row lg:gap-2 items-center">
@@ -188,15 +175,12 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                       </p>
                       <div className="bg-red-500 p-1 text-sm lg:text-sm text-white:lg:text-lg">
                         <p className="text-white">
-                          {Math.round(
-                            (product?.discountedPrice / product?.price) * 100
-                          )}
-                          % OFF
+                          {Math.round((product?.discountedPrice / product?.price) * 100)}% OFF
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-row justify-between w-24 h-9 px-2 items-center border">
+                  <div className="flex flex-row justify-between w-24 h-9 px-2 items-center border border-gray-500">
                     <Button
                       variant="ghost"
                       size="icon"
@@ -206,11 +190,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                       <Minus className="h-4 w-4 text-slate-600" />
                     </Button>
                     <p className="font-normal text-sm">{qty}</p>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => setQty((prev) => prev + 1)}
-                    >
+                    <Button variant="ghost" size="icon" onClick={() => setQty((prev) => prev + 1)}>
                       <Plus className="h-4 w-4 text-slate-600" />
                     </Button>
                   </div>
@@ -253,44 +233,32 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                     </Button>
                   </div>
                   <div className="flex flex-col w-full justify-center items-center">
-                    <p className="text-sm font-medium  my-4">
-                      Reasons to Choose Us
-                    </p>
+                    <p className="text-sm font-medium  my-4">Reasons to Choose Us</p>
                     <div className="flex flex-row gap-4">
-                      <div className="max-w-20 bg-slate-600 text-white p-2 border text-center rounded-md flex flex-col items-center justify-center">
+                      <div className="max-w-20 bg-black text-white p-2 border text-center rounded-md flex flex-col items-center justify-center">
                         <ShieldCheck className="h-6 w-6 text-white" />
-                        <p className="font-medium text-[10px] mt-1">
-                          SECURE CHECKOUT
-                        </p>
+                        <p className="font-medium text-[12px] mt-1">SECURE CHECKOUT</p>
                       </div>
-                      <div className="max-w-20 bg-slate-600 text-white p-2 border text-center rounded-md flex flex-col items-center justify-center">
+                      <div className="max-w-20 bg-black text-white p-2 border text-center rounded-md flex flex-col items-center justify-center">
                         <ArrowRightLeft className="h-6 w-6 text-white" />
-                        <p className="font-medium text-[10px] mt-1">
-                          EASY RETURN
-                        </p>
+                        <p className="font-medium text-[12px] mt-1">EASY RETURN</p>
                       </div>
-                      <div className="max-w-20 bg-slate-600 text-white p-2 border text-center rounded-md flex flex-col items-center justify-center">
+                      <div className="max-w-20 bg-black text-white p-2 border text-center rounded-md flex flex-col items-center justify-center">
                         <Car className="h-6 w-6 text-white" />
-                        <p className="font-medium text-[10px] mt-1">
-                          Fast Shipping
-                        </p>
+                        <p className="font-medium text-[12px] mt-1">Fast Shipping</p>
                       </div>
-                      <div className="max-w-20 bg-slate-600 text-white p-2 border text-center rounded-md flex flex-col items-center justify-center">
+                      {/* <div className="max-w-20 bg-slate-600 text-white p-2 border text-center rounded-md flex flex-col items-center justify-center">
                         <ShieldCheck className="h-6 w-6 text-white" />
                         <p className="font-medium text-[10px] mt-1">
                           SECURE CHECKOUT
                         </p>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
-                <div className="ml-6">
-                  <p className="text-sm font-medium ml-[-10px] mb-4">
-                    Product Description
-                  </p>
-                  <p className="text-sm font-light pb-1">
-                    {product?.description}
-                  </p>
+                <div className="mx-4 mt-3">
+                  <p className="text-base font-medium  mb-2">Product Description</p>
+                  <p className="text-sm font-light from-neutral-300 pb-1">{product?.description}</p>
                 </div>
               </div>
             </div>

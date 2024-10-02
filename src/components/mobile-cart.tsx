@@ -23,7 +23,6 @@ const MobileCart = ({
   onClickPlus,
   onClickDelete,
 }: any) => {
-  console.log("Carttttmobile", cartProducts);
   return (
     <div
       className="fixed
@@ -57,9 +56,7 @@ const MobileCart = ({
         </Sheet>
       </div>
       <div className=" flex flex-1 flex-grow items-center justify-center">
-        <h1 className="font-semibold text-2xl lg:text-3xl text-navbarTextColor">
-          {"Brand"}
-        </h1>
+      <Image src="/Duo2.webp" alt={`brand-icon`} width={180} height={40} />
       </div>
 
       <div className=" flex flex-1 flex-grow justify-end items-end">
@@ -106,7 +103,7 @@ const MobileCart = ({
             </SheetContent>
           ) : (
             <SheetContent
-              className="flex flex-1 w-[90%] pt p-2 flex-col "
+              className="flex flex-1 w-[90%] pt p-2 flex-col bg-appBgColor"
               side="right"
             >
               <SheetHeader className="flex flex-row pt-2">
@@ -128,7 +125,7 @@ const MobileCart = ({
                   />
                 ))}
                 <div>
-                  <p className="text-md font-semibold ">People Also Bought</p>
+                  {/* <p className="text-md font-semibold ">People Also Bought</p>
                   <CartSuggestions
                     allProducts={[
                       {
@@ -150,13 +147,13 @@ const MobileCart = ({
                         images: ["/p1.webp"],
                       },
                     ]}
-                  />
+                  /> */}
                 </div>
               </div>
 
               <div>
-                <div className="flex flex-col p-2 absolute left-0 bottom-1 z-10 bg-white w-full">
-                  <Separator />
+                <div className="flex flex-col p-2 absolute left-0 bottom-1 z-10 bg-appBgColor w-full">
+                  <Separator className="bg-brand2" />
                   <div className="flex flex-row justify-between w-full font-semibold mt-2">
                     <p>Total</p>
                     <p>₹{total}</p>

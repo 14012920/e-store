@@ -16,15 +16,8 @@ const AppHeader = () => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
-  const {
-    cartCount,
-    cartProducts,
-    total,
-    resetCart,
-    plusItem,
-    removeItem,
-    deleteItem,
-  } = useCartStore();
+  const { cartCount, cartProducts, total, resetCart, plusItem, removeItem, deleteItem } =
+    useCartStore();
 
   console.log("cartProducts", cartProducts);
 
@@ -46,13 +39,14 @@ const AppHeader = () => {
       };
       const order = await createCheckoutOrder(payload);
       console.log("myorder", order);
+      const key = process.env.NEXT_PUBLIC_API_PATH;
       if (order) {
         const options = {
-          key: "rzp_test_U1odAZx2aIXLbD",
+          key: key,
           currency: "INR",
           one_click_checkout: true,
           show_coupons: false,
-          name: "DueoPrimp",
+          name: "DuoPrimp",
           order_id: order.id,
           handler: async (response: any) => {
             const data = {
@@ -62,16 +56,14 @@ const AppHeader = () => {
               razorpaySignature: response.razorpay_signature,
             };
             const result = await verifyPayment(data);
-            console.log("verify result", result);
             if (result?.isOk) {
               resetCart();
               router.push("/success");
-              // saveOrder(response.razorpay_order_id);
             }
           },
-          theme: {
-            color: "#0c1424",
-          },
+          // theme: {
+          //   color: "#3c3c3c",
+          // },
         };
         const paymentObject = new window.Razorpay(options);
         paymentObject.on("payment.failed", function (response: any) {
@@ -106,9 +98,7 @@ const AppHeader = () => {
           total={total}
           handlePayment={handlePayment}
           cartCount={cartCount}
-          onClickDelete={(item: any, qty: any) =>
-            onClickDelete(item, item?.qty)
-          }
+          onClickDelete={(item: any, qty: any) => onClickDelete(item, item?.qty)}
           onClickMinus={(item: any, qty: any) => onClickMinus(item, qty)}
           onClickPlus={(item: any, qty: any) => onClickPlus(item, qty)}
         />

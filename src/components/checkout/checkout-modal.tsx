@@ -163,21 +163,6 @@ const CheckoutModal = ({
           key: "rzp_test_U1odAZx2aIXLbD",
           currency: "INR",
           one_click_checkout: true,
-          name: "DueoPrimp",
-          prefill: { contact: 8529991516 },
-          readonly: { contact: false },
-          // checkout: {
-          //   method: {
-          //     netbanking: 0,
-          //     card: 1,
-          //     upi: 1,
-          //     wallet: 1,
-          //   },
-          //   notes: {
-          //     key1: "value3",
-          //     key2: "value2",
-          //   },
-          // },
           order_id: order.id,
           handler: async (response: any) => {
             const data = {
@@ -267,21 +252,12 @@ const CheckoutModal = ({
 
         {loader ? (
           <div className="absolute top-[42%] right-[43%] mx-auto">
-            <Loader
-              className="h-12 w-12 my-2 animate-spin ml-4"
-              color="#0c1424"
-            />
+            <Loader className="h-12 w-12 my-2 animate-spin ml-4" color="#0c1424" />
             <p className="font-semibold">intializing...</p>
           </div>
         ) : paymentSuccess ? (
           <div className="absolute top-[35%] right-[43%] mx-auto">
-            <Image
-              src={"/success.gif"}
-              height={150}
-              width={150}
-              alt="success"
-              className="ml-8"
-            />
+            <Image src={"/success.gif"} height={150} width={150} alt="success" className="ml-8" />
             <p className="font-semibold">Order placed succefully!</p>
           </div>
         ) : (
@@ -341,8 +317,7 @@ const CheckoutModal = ({
               Products in <span className="text-yellow-600">huge demand</span>
             </DialogTitle>
             <DialogDescription>
-              Product might run Out of Stock.Are you sure you want to cancel
-              payment?
+              Product might run Out of Stock.Are you sure you want to cancel payment?
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>

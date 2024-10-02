@@ -23,22 +23,20 @@ const ProductBenifts = () => {
         <div className="w-32 h-1 bg-brandSecondary mt-3" />
         <div className="py-8 text-[#888] font-light">
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500.
+          Bluetooth inkfree thermal printer allow you can print out various photo, patterns, including lable and sticker, mini printer with App operation. Support both iOS and Android phone. Coming with 5 roll of print paper of 57x25mm, 5 roll of self-adhesive print paper and a set of stickers, meeting your various needs of printing, great value pack.
           </p>
           <div className="flex flex-wrap text-sm justify-between w-[90%]">
             <div className="flex items-center gap-2 p-2">
               <div className="w-[10px] h-[10px] rounded-full bg-brandSecondary" />
-              <p>Easy to Carry and Charge</p>
+              <p>BLUETOOTH INK-FREE PRINT TECH</p>
             </div>
             <div className="flex items-center gap-2  p-2">
               <div className="w-[10px] h-[10px] rounded-full bg-brandSecondary" />
-              <p>Easy to Carry and Charge</p>
+              <p>200DPI RESOLUTION CLEAR PRINTING</p>
             </div>
             <div className="flex items-center gap-2 p-2">
               <div className="w-[10px] h-[10px] rounded-full bg-brandSecondary" />
-              <p>Easy to Carry and Charge</p>
+              <p>COMPACT AND PORTABLE</p>
             </div>
             <div className="flex items-center gap-2 p-2">
               <div className="w-[10px] h-[10px] rounded-full bg-brandSecondary" />

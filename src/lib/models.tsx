@@ -27,7 +27,7 @@ const productSchema = new Schema({
   discountedPrice: { type: Number, required: true, min: 0 },
   images: [{ type: String }],
   category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
-  collection: { type: String, default: "All" },
+  collections: { type: String, default: "All" },
   properties: { type: Object },
   stock: { type: Number, required: true, min: 0 },
   ribbon: { type: String },
@@ -109,6 +109,7 @@ const heroSchema = new Schema({
   title: { type: String },
   image: { type: String },
   url: { type: String },
+  subtitle:{type:String}
 });
 
 const reviewSchema = new Schema(

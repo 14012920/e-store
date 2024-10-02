@@ -14,7 +14,8 @@ const Category = ({ allCats, title }: any) => {
 
       <div className="grid grid-cols-3 lg:overflow-x-auto lg:flex lg:no-scrollbar gap-3 lg:gap-4">
         {allCats.map((item: any, index: number) => (
-          <Link href={`/view-all`} key={index}>
+          <Link
+           href={`/view-all/by-cat-id/{${item?.name}}`} key={index}>
             <div className="flex flex-col items-center text-center gap-2">
               <img
                 src={item?.image}

@@ -148,8 +148,8 @@ const DesktopCart = ({
               </div>
 
               <div>
-                <div className="flex flex-col p-2 absolute left-0 bottom-1 z-10 bg-white w-full">
-                  <Separator />
+                <div className="flex flex-col p-2 absolute left-0 bottom-1 z-10  w-full">
+                  <Separator className="bg-slate-600" />
                   <div className="flex flex-row justify-between w-full font-semibold mt-2">
                     <p>Total</p>
                     <p>₹{total}</p>

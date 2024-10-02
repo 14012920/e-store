@@ -15,9 +15,7 @@ const BestDeal = () => {
 
         <div className="py-4 text-[#888] font-light">
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500.
+          Mini Bluetooth Thermal Printer, Portable Label Printer Inkfree Printer for Android & iOS System, Thermal Printer with 5 White & 3 Colour Print
           </p>
         </div>
         <CountdownTimer targetDate={dateTimeAfterThreeDays} />

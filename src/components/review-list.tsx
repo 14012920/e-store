@@ -12,7 +12,7 @@ const ReviewList = () => {
     // other logic
   };
   return (
-    <div className="flex justify-center items-center p-2 w-full bg-white  mt-4">
+    <div className="flex justify-center items-center p-2 w-full bg-opacity-15 mt-4">
       <div className="w-full lg:w-full px-5 flex flex-col gap-2 p-5  lg:flex-row">
         <div className="flex flex-1 rounded-md items-baseline flex-col gap-2 px-2">
           <h3 className="text-md font-medium">Write a Reviews</h3>
