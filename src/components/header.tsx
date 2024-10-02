@@ -39,7 +39,7 @@ const AppHeader = () => {
       };
       const order = await createCheckoutOrder(payload);
       console.log("myorder", order);
-      const key = process.env.NEXT_PUBLIC_API_PATH;
+      const key = process.env.RAZORPAY_APP_ID;
       if (order) {
         const options = {
           key: key,

@@ -12,8 +12,8 @@ import Link from "next/link";
 export default async function Home() {
   const page = 1;
   const { productByCatId } = await fetchProductByCatId("Home Decor", page);
-  const {banners} = await fetchBanners()
-  console.log("productByCatId",banners)
+  const { banners } = await fetchBanners();
+  console.log("productByCatId", banners);
   const { cats } = await fetchCats();
 
   return (
@@ -30,8 +30,6 @@ export default async function Home() {
           <ProductBenifts />
         </div>
 
-      
-
         <div className="px-4 py-4 lg:px-24 lg:mt-8">
           <ProductCarousel
             isShowTitle={true}
@@ -40,10 +38,8 @@ export default async function Home() {
             data={productByCatId}
           />
           <div className="flex flex-1 items-center py-8 justify-center">
-            <Link href={"/view-all"}>
-              <Button className="border-none text-white hover:bg-primary">
-                VIEW ALL PRODUCTS
-              </Button>
+            <Link href={`/view-all/by-cat-id/New Arrival}`}>
+              <Button className="border-none text-white hover:bg-primary">VIEW ALL PRODUCTS</Button>
             </Link>
           </div>
 

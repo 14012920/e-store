@@ -11,22 +11,15 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 
-export function ProductCarousel({
-  data,
-  isShowTitle,
-  title,
-  hightLighted,
-}: any) {
+export function ProductCarousel({ data, isShowTitle, title, hightLighted }: any) {
   const id = "1234";
   return (
     <div>
       {isShowTitle && (
         <div className="flex flex-col justify-center  w-full py-4 my-8">
-          <h3 className="font-medium text-brandText lg:text-xl tracking-wider">
-            {"Shop By"}
-          </h3>
+          <h3 className="font-medium text-brandText lg:text-xl tracking-wider">{"Shop By"}</h3>
           <h1 className="font-semibold text-2xl lg:text-3xl text-navbarTextColor">
-            {"BEST SELLER"}
+            {"NEW ARRIVAL"}
           </h1>
           <div className="w-32 h-1 bg-brandSecondary mt-3" />
         </div>
@@ -40,14 +33,8 @@ export function ProductCarousel({
       >
         <CarouselContent>
           {data?.map((item: any, index: number) => (
-            <CarouselItem
-              key={index}
-              className="basis-[45%] md:basis-1/2 lg:basis-1/4 "
-            >
-              <Link
-                href={`/product-detail/${item?._id}`}
-                className="cursor-pointer"
-              >
+            <CarouselItem key={index} className="basis-[45%] md:basis-1/2 lg:basis-1/4 ">
+              <Link href={`/product-detail/${item?._id}`} className="cursor-pointer">
                 <div>
                   <Card className="border-none relative">
                     <div className="bg-slate-50 p-1 text-[10px] lg:text-sm text-primary absolute top-2 left-2">
@@ -65,9 +52,7 @@ export function ProductCarousel({
                     </CardContent>
                     <CardFooter className="p-2 flex flex-col">
                       <div>
-                        <p className="text-xs text-center mb-2 lg:text-sm">
-                          {item?.title}
-                        </p>
+                        <p className="text-xs text-center mb-2 lg:text-sm">{item?.title}</p>
                       </div>
                       <div className="flex flex-row w-full justify-between items-center">
                         <div className="lg:flex lg:flex-row lg:gap-2">
@@ -80,12 +65,7 @@ export function ProductCarousel({
                         </div>
 
                         <div className="bg-red-500 p-1 text-xs lg:text-sm text-white">
-                          <p>
-                            {Math.round(
-                              (item?.discountedPrice / item?.price) * 100
-                            )}
-                            % OFF
-                          </p>
+                          <p>{Math.round((item?.discountedPrice / item?.price) * 100)}% OFF</p>
                         </div>
                       </div>
                     </CardFooter>

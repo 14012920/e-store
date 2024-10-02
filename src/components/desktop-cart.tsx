@@ -1,10 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "@/components/ui/sheet";
 import ItemCard from "./itemCard";
 import { Separator } from "./ui/separator";
 import { Menu, Search, User } from "lucide-react";
@@ -31,7 +26,7 @@ const DesktopCart = ({
     left-0  z-10 flex flex-1 min-w-full items-center px-16 min-h-20 bg-appBgColor justify-between border-b-[1px]"
     >
       <Link href={"/"}>
-        <h1 className="text-2xl font-bold">BRAND NAME</h1>
+        <Image src="/Duo2.webp" alt={`brand-icon`} width={180} height={40} />
       </Link>
       <div className="gap-10 flex items-center">
         <ul className="flex gap-3 font-normal h-16 items-center">
@@ -72,11 +67,7 @@ const DesktopCart = ({
             </div>
           )}
         </Button>
-        <Sheet
-          open={isOpen}
-          onOpenChange={() => setIsOpen(!isOpen)}
-          defaultOpen={false}
-        >
+        <Sheet open={isOpen} onOpenChange={() => setIsOpen(!isOpen)} defaultOpen={false}>
           {cartCount < 1 ? (
             <SheetContent
               className="flex flex-1 w-[90%] pt p-2 flex-col overflow-y-auto no-scrollbar bg-appBgColor"
