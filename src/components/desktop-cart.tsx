@@ -23,7 +23,7 @@ const DesktopCart = ({
     <div
       className="fixed
     top-0
-    left-0  z-10 flex flex-1 min-w-full items-center px-16 min-h-20 bg-appBgColor justify-between border-b-[1px]"
+    left-0  z-10 flex flex-1 min-w-full items-center px-16 min-h-20 bg-navbarBg justify-between border-b-[1px]"
     >
       <Link href={"/"}>
         <Image src="/Duo2.webp" alt={`brand-icon`} width={180} height={40} />

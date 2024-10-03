@@ -4,9 +4,9 @@
 
 @layer base {
   :root {
-    --app-bg-color: #ecefeb;
+    --app-bg-color: #f8faf7;
     --brand-secondary: #3c3c3c;
-    --brand-text: #3c3c3c;    ;
+    --brand-text: #3c3c3c;
     --brand-modify-secondary: #3c3c3c;
     --product-bg-color: #f7f7f7;
     --button-bg-color: #3c3c3c;
@@ -21,7 +21,7 @@
     --product-icon-color: #222222;
     --product-btn-bg-hover-color: #3c3c3c;
     --product-icon-hover-color: #ffffff;
-    --navbar-background-color: #ffffff;
+    --navbar-background-color: #ecefeb;
     --navbar-text-modify-color: rgba(34, 34, 34, 0.1);
     --navbar-text-color: #222222;
     --header-icon-modify-color: rgba(34, 34, 34, 0.1);

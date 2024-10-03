@@ -28,7 +28,7 @@ const config = {
       },
       colors: {
         primary: "var(--brand-secondary)",
-        brand2:"var(--brand-modify-secondary)",
+        brand2: "var(--brand-modify-secondary)",
         brandSecondary: "var(--brand-secondary)",
         appBgColor: "var(--app-bg-color)",
         productBgColor: "var(--product-bg-color)",
@@ -40,6 +40,7 @@ const config = {
         navbarTextColor: "var(--navbar-text-color)",
         navbarTextHoverColor: "var(--header-icon-hover-color)",
         brandText: "var(--brand-text)",
+        navbarBg: "var(--navbar-background-color)",
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -37,11 +37,15 @@ export default async function Home() {
             hightLighted="ARRIVAL"
             data={productByCatId}
           />
-          <div className="flex flex-1 items-center py-8 justify-center">
-            <Link href={`/view-all/by-cat-id/New Arrival}`}>
-              <Button className="border-none text-white hover:bg-primary">VIEW ALL PRODUCTS</Button>
-            </Link>
-          </div>
+          {productByCatId?.length > 4 && (
+            <div className="flex flex-1 items-center py-8 justify-center">
+              <Link href={`/view-all/by-cat-id/New Arrival}`}>
+                <Button className="border-none text-white hover:bg-primary">
+                  VIEW ALL PRODUCTS
+                </Button>
+              </Link>
+            </div>
+          )}
 
           {/* <div>
             <Category title="COMBO" allProducts={data2} />
