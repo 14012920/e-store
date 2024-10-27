@@ -20,7 +20,21 @@ const AppHeader = () => {
     useCartStore();
 
   console.log("cartProducts", cartProducts);
-
+  const getSKU = (str:string)=>{
+    
+    var str2 = str.toLowerCase()?.split(' ');
+    if(str2.length ==1){
+        return str2[0]
+    }
+ if(str2.length ==2){
+        return str2[0]+str2[1]
+    }
+  let final =''  ;
+  for(let i = 0; i<str2.length;i++){
+     final = final+ str2[i]?.charAt(0);
+ }
+  return final
+  }
   const handlePayment = async () => {
     setIsOpen(false);
     const lineItems = cartProducts?.map((item: any) => {
@@ -29,6 +43,7 @@ const AppHeader = () => {
         quantity: item?.qty,
         name: item?.title,
         image_url: item?.images[0],
+        sku:getSKU(item?.title),
       };
     });
     try {
@@ -36,9 +51,10 @@ const AppHeader = () => {
         amount: total * 100,
         currency: "INR",
         line_items: lineItems,
+        notes: lineItems[0],
       };
       const order = await createCheckoutOrder(payload);
-      console.log("myorder", order);
+      console.log("myorder2222", payload, order);
       const key = process.env.RAZORPAY_APP_ID;
       if (order) {
         const options = {
@@ -48,6 +64,7 @@ const AppHeader = () => {
           show_coupons: false,
           name: "DuoPrimp",
           order_id: order.id,
+          notes: lineItems[0],
           handler: async (response: any) => {
             const data = {
               orderCreationId: order?.id,

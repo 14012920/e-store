@@ -11,13 +11,14 @@ const razorpay = new Razorpay({
   key_secret: process.env.RAZORPAY_APP_SECRET,
 });
 export async function POST(request: NextRequest) {
-  const { amount, currency, line_items } = (await request.json()) as any;
+  const { amount, currency, line_items, notes } = (await request.json()) as any;
   var option = {
     amount: amount,
     currency: currency,
     receipt: getRandomId(1000, 99000),
     line_items_total: amount,
     line_items: line_items,
+    notes: notes,
   };
   console.log(option);
   const order = await razorpay.orders.create(option);
